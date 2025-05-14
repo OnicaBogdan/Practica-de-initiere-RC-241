@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principală</title>
+    <link rel="stylesheet" href="../main/main.css">
+    <link rel="stylesheet" href="../navbar/nav.css">
+</head>
+<body>
+    <main>
+        <h1>Modele de Mașini</h1>
+        <div class="models" id="models-container">
+            <!-- Imaginile vor fi generate aici -->
+        </div>
+    </main>
+    <script>-
+        
+        fetch('../images/images.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Eroare la încărcarea fișierului JSON");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const modelsContainer = document.getElementById('models-container');
+                data.images.forEach(image => {
+                    
+                    const modelDiv = document.createElement('div');
+                    modelDiv.className = 'model';
+
+                    
+                    const img = document.createElement('img');
+                    img.src = image.src;
+                    img.alt = image.alt;
+
+                    
+                    const caption = document.createElement('p');
+                    caption.textContent = image.caption;
+
+                    
+                    modelDiv.appendChild(img);
+                    modelDiv.appendChild(caption);
+
+                    
+                    modelsContainer.appendChild(modelDiv);
+                });
+            })
+            .catch(error => console.error('Eroare la încărcarea imaginilor:', error));
+    </script>
+    <script src="../navbar/nav.js"></script>
+    <script src="../footer/footer.js"></script>
+</body>
+</html>

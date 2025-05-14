@@ -1,0 +1,29 @@
+{
+  "images": [
+    {
+      "src": "https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg",
+      "alt": "Audi-R8 V12",
+      "caption": "Audi-R8 V12"
+    },
+    {
+      "src": "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg",
+      "alt": "Corvette-Z06",
+      "caption": "Corvette-Z06"
+    },
+    {
+      "src": "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
+      "alt": "BMW M4-Competition",
+      "caption": "BMW M4-Competition"
+    },
+    {
+      "src": "https://cdn.pixabay.com/photo/2017/03/27/14/56/sports-car-2179220_1280.jpg",
+      "alt": "Mercedes-Benz GT86",
+      "caption": "Mercedes-Benz GT86"
+    },
+    {
+      "src": "https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278_1280.jpg",
+      "alt": "Bugatti Veyron Super Sport",
+      "caption": "Bugatti Veyron Super Sport"
+    }
+  ]
+}
