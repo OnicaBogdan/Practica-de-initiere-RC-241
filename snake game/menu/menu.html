@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game - Menu</title>
+    <link rel="stylesheet" href="menu.css">
+    <style>
+        body { background: #14171c; }
+    </style>
+</head>
+<body>
+    <!-- Two Snake Animated Borders -->
+    <canvas id="snakeAnimBg1" class="animated-snake-bg"></canvas>
+    <canvas id="snakeAnimBg2" class="animated-snake-bg"></canvas>
+
+    <div class="menu-container glass">
+        <div class="menu-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/3069/3069179.png" class="snake-logo" alt="snake logo" />
+            <h1 class="title">Snake Game</h1>
+        </div>
+        <button class="start-btn" id="startBtn">START</button>
+        <div class="options-section">
+            <h2>Options</h2>
+            <label>
+                Wallpaper:
+                <select id="wallpaperSelect">
+                    <option value="nature">Nature</option>
+                    <option value="desert">Desert</option>
+                    <option value="ocean">Ocean</option>
+                </select>
+            </label>
+            <div id="wallpaperPreview">
+                <img id="previewImg" src="" alt="Preview">
+            </div>
+            <label>
+                Snake Skin:
+                <select id="snakeSkinSelect">
+                    <option value="classic">Classic Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="purple">Purple</option>
+                    <option value="pink">Pink</option>
+                    <option value="rainbow">Rainbow</option>
+                    <option value="gold">Gold</option>
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                </select>
+            </label>
+            <label>
+                Speed:
+                <select id="speedSelect">
+                    <option value="300">Very Slow</option>
+                    <option value="200" selected>Slow</option>
+                    <option value="120">Normal</option>
+                    <option value="70">Fast</option>
+                </select>
+            </label>
+        </div>
+    </div>
+    <footer class="menu-footer">
+        Made by Onica Bogdan
+    </footer>
+    <script src="menu.js"></script>
+    <script src="../navbar/nav.js"></script>
+</body>
+</html>

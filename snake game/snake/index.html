@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake Game Modern</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="center-all">
+    <div class="snake-header">
+      <img src="https://cdn-icons-png.flaticon.com/512/3069/3069179.png" alt="snake-logo" class="snake-logo" style="width:48px;height:48px;">
+      <h1 class="snake-title">Snake Game</h1>
+    </div>
+    <div class="game-container">
+      <canvas id="gameCanvas"></canvas>
+      <div class="score-board">
+        <h1>
+          Score: <span id="score">0</span>
+          <span id="highScore"></span>
+        </h1>
+      </div>
+      <button id="restartButton" class="hidden">Restart</button>
+      <div class="snake-controls">
+        <button class="snake-btn" id="pauseBtn">⏸ Pauză</button>
+        <button class="snake-btn" id="restartBtn">🔁 Restart</button>
+      </div>
+    </div>
+  </div>
+  <footer class="snake-footer">
+    Made by Onica Bogdan
+  </footer>
+  <script src="script.js"></script>
+  <script src="../navbar/nav.js"></script>
+</body>
+</html>

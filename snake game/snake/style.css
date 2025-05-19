@@ -1,0 +1,216 @@
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    overflow: hidden;
+    background:
+        linear-gradient(120deg, #0f2027 0%, #43cea2 100%),
+        url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+    background-size: cover, auto;
+    background-repeat: no-repeat, repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;     /* centru vertical */
+    justify-content: center; /* centru orizontal */
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.snake-header {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: 18px;
+    justify-content: center;
+    margin-top: 0; /* elimină spațiul de sus */
+}
+
+.snake-logo {
+    width: 52px; height: 52px;
+    filter: drop-shadow(0 2px 14px #43cea2cc) brightness(1.14);
+    border-radius: 12px;
+    background: #fff2;
+    padding: 5px;
+    animation: logoPulse 2.6s infinite cubic-bezier(.66,0,.23,1);
+}
+@keyframes logoPulse {
+    0%,100% { box-shadow: 0 0 0 0 #ea7dff55;}
+    60% { box-shadow: 0 0 0 22px #ea7dff11;}
+}
+.snake-title {
+    color: #fff;
+    font-size: 2.3em;
+    letter-spacing: 2.5px;
+    font-weight: bold;
+    text-shadow: 0 6px 28px #185a9d99, 0 1px 0 #43cea299;
+    background: linear-gradient(92deg, #43cea2 35%, #185a9d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGlow 2.2s infinite alternate cubic-bezier(.85,0,.23,1);
+    margin: 0;
+}
+@keyframes titleGlow {
+    0% { text-shadow: 0 6px 28px #185a9d99, 0 1px 0 #43cea299; }
+    100% { text-shadow: 0 10px 38px #ea7dffcc, 0 2px 6px #43cea288; }
+}
+
+.game-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(40, 46, 58, 0.88);
+    padding: 48px 60px 38px 60px;
+    border-radius: 29px;
+    box-shadow: 0 18px 80px 0 rgba(67,206,162,0.17), 0 2px 80px #185a9d33;
+    border: 2.5px solid #43cea2a6;
+    min-width: 340px;
+    max-width: 95vw;
+    transition: box-shadow 0.3s, border 0.2s, transform 0.35s cubic-bezier(.4,1.61,.7,1), opacity 0.35s;
+    opacity: 1;
+    margin: 0 auto;
+    backdrop-filter: blur(18px) brightness(1.05);
+    -webkit-backdrop-filter: blur(18px) brightness(1.05);
+}
+
+.game-container:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: -18px; left: -18px; right: -18px; bottom: -18px;
+    border-radius: 38px;
+    pointer-events: none;
+    box-shadow: 0 0 48px 18px #43cea2cc, 0 0 16px 3px #ea7dff55;
+    opacity: 0.13;
+}
+
+/* --- Score Board --- */
+.score-board {
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    text-align: center;
+}
+.score-board h1 {
+    color: #43cea2;
+    font-size: 1.18em;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-shadow: 0 1px 8px #185a9d55, 0 1px 0 #43cea288;
+    margin: 0;
+}
+
+/* --- Controls --- */
+.snake-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.snake-btn {
+    background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+    color: #fff;
+    font-size: 1.19em;
+    font-weight: bold;
+    padding: 11px 30px;
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(67,206,162,0.13), 0 1px 6px #185a9d22;
+    letter-spacing: 1.3px;
+    border: 2.5px solid #43cea2;
+    transition: box-shadow 0.18s, color 0.18s, background 0.2s, transform 0.14s, border 0.2s;
+}
+.snake-btn:hover, .snake-btn:focus {
+    transform: scale(1.07) rotate(-1.8deg);
+    background: linear-gradient(90deg, #185a9d 0%, #43cea2 100%);
+    box-shadow: 0 10px 24px #185a9d44, 0 1px 18px #43cea233;
+    color: #fff8d8;
+    border-color: #ea7dff;
+}
+
+/* --- Canvas --- */
+#gameCanvas {
+    background: rgba(17, 27, 37, 0.98);
+    border-radius: 16px;
+    box-shadow: 0 4px 32px #185a9d55, 0 2px 20px #43cea222;
+    border: 2.5px solid #43cea2cc;
+    margin-bottom: 18px;
+    transition: box-shadow 0.2s, border 0.2s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Restart Button --- */
+#restartButton {
+    display: block;
+    margin: 0 auto 22px auto;
+    background: linear-gradient(90deg, #ea7dff 0%, #43cea2 100%);
+    color: #fff;
+    font-size: 1.15em;
+    font-weight: bold;
+    padding: 10px 35px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px #185a9d44, 0 1px 9px #43cea233;
+    letter-spacing: 1.1px;
+    border: 2.5px solid #ea7dff;
+    transition: box-shadow 0.2s, color 0.18s, background 0.18s, transform 0.13s, border 0.18s;
+}
+#restartButton:hover, #restartButton:focus {
+    background: linear-gradient(90deg, #185a9d 0%, #ea7dff 100%);
+    color: #fffbe9;
+    transform: scale(1.09) rotate(-1.5deg);
+    border-color: #43cea2;
+}
+
+/* --- Footer --- */
+.snake-footer {
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #232526ee 0%, #3a7bd5ee 100%);
+    color: #43cea2;
+    text-align: center;
+    font-size: 1.09em;
+    padding: 7px 0 10px 0;
+    letter-spacing: 1.2px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    z-index: 998;
+    border-top: 1px solid #43cea277;
+    box-shadow: 0 -2px 8px #185a9d22;
+    opacity: 0.93;
+    user-select: none;
+}
+
+/* --- Hide class for restart --- */
+.hidden { display: none !important; }
+
+/* --- Responsive --- */
+@media (max-width: 700px) {
+    .game-container {
+        padding: 12px 2vw 10px 2vw;
+        min-width: 0;
+    }
+    .snake-header { gap: 8px; }
+    .snake-title { font-size: 1.27em; }
+    .snake-logo { width: 32px; height: 32px; }
+    .score-board h1 { font-size: 1em; }
+    .snake-btn { font-size: 1em; padding: 9px 10vw; }
+    #gameCanvas { max-width: 98vw; }
+}
+
+/* --- Scrollbar (optional if overflow) --- */
+::-webkit-scrollbar {
+    width: 9px;
+    background: #222c3a;
+}
+::-webkit-scrollbar-thumb {
+    background: #43cea2bb;
+    border-radius: 8px;
+}
